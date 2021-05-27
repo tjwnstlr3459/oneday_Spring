@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- 
+		scope 속성을 명시하지 않으면 객체 요청시 재사용
+		scope="prototype" 속성 설정 후 객체 요청시 새로운 객체를 만들어서 반환
+	 -->
+	<bean id="data" class="kr.or.member.TestData" scope="prototype">
+		<constructor-arg>
+			<value type="java.lang.Integer">100</value>
+		</constructor-arg>
+	
+	</bean>
+</beans>

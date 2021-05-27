@@ -30,4 +30,34 @@
     <servlet-name>Dependency</servlet-name>
     <url-pattern>/dependency</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Dependency2</display-name>
+    <servlet-name>Dependency2</servlet-name>
+    <servlet-class>kr.or.tv.controller.Dependency2Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Dependency2</servlet-name>
+    <url-pattern>/dependency2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BeanTest1</display-name>
+    <servlet-name>BeanTest1</servlet-name>
+    <servlet-class>kr.or.tv.controller.BeanTest1Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BeanTest1</servlet-name>
+    <url-pattern>/beanTest1</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BeanTest2</display-name>
+    <servlet-name>BeanTest2</servlet-name>
+    <servlet-class>kr.or.member.BeanTest2Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BeanTest2</servlet-name>
+    <url-pattern>/beanTest2</url-pattern>
+  </servlet-mapping>
 </web-app>
