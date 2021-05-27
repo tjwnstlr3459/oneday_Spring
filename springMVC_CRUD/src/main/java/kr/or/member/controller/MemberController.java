@@ -55,6 +55,15 @@ public class MemberController {
 	   model.addAttribute("loc","/");
 	   return "common/msg";
    }
+   @RequestMapping(value="/logout.do")
+   public String logout(Member m,Model model,HttpSession session) {
+	   if(session !=null) {
+		   session.invalidate();
+		   model.addAttribute("msg","로그아웃하셨습니다");
+	   }
+	   model.addAttribute("loc","/");
+	   return "common/msg";
+   }
 }
 
 
