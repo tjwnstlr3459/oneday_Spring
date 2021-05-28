@@ -1,5 +1,7 @@
 package kr.or.member.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,12 +55,89 @@ public class MemberController {
 	   model.addAttribute("loc","/");
 	   return "common/msg";
    }
+   
    @RequestMapping(value="/logout.do")
    public String logout(Member m,Model model,HttpSession session) {
 	   if(session !=null) {
 		   session.invalidate();
 		   model.addAttribute("msg","로그아웃하셨습니다");
 	   }
+	   return "common/msg";
+	  
+	   //return "redirect:/";  msg 필요없이 바로 갈경우
+   }
+   
+   @RequestMapping(value="/searchFrm.do")
+   public String searchFrm() {
+      return "member/searchFrm";
+   }
+   
+   @RequestMapping(value="idSearch.do")
+   //1.Member m으로 한번에 받거나
+   //2.name값 하나하나 받을수도 있다
+   public String idSearch(Member m,Model model) {
+	   Member member = service.searchId(m);
+	   if(member != null) {
+		   model.addAttribute("msg","아이디는["+member.getMemberId()+"] 입니다.");
+	   }else {
+		   model.addAttribute("msg","정보를 조회할수 없습니다.");
+	   }
+	   model.addAttribute("loc","/");
+	   return "common/msg";
+   }
+   
+   //아이디/비번 찾기
+   @RequestMapping(value="/pwSearch.do")
+   public String pwSearch(Member m, Model model) {
+	   Member member = service.searchPw(m);
+	   if(member != null) {
+		   model.addAttribute("msg","비밀번호는["+member.getMemberPw()+"] 입니다.");
+	   }else {
+		   model.addAttribute("msg","정보를 조회할수 없습니다.");
+	   }
+	   model.addAttribute("loc","/");
+	   return "common/msg";
+   }
+   
+   
+   //탈퇴
+   @RequestMapping(value="/deleteMember.do")
+   public String deleteMember(String memberId,HttpSession session,Model model) {
+	   int result = service.deleteMember(memberId);
+	   if(result>0) {
+		   session.invalidate();
+		   model.addAttribute("msg","탈퇴되셨습니다.");
+	   }else {
+		   model.addAttribute("msg","탈퇴 실패.");
+	   }
+	   model.addAttribute("loc","/");
+	   return "common/msg";
+   }
+   
+   @RequestMapping(value="/mypage.do")
+   public String mypage(String memberId,Model model) {
+	   Member member = service.selectOneMember(memberId);
+		   model.addAttribute("member",member);
+		   return "member/mypage";
+   }
+   
+   @RequestMapping(value="/updatemember.do")
+   public String updatemember(Member m,Model model) {
+	   int result = service.updateMember(m);
+	   return "redirect:/mypage.do?memberId="+m.getMemberId();
+   }
+   
+   @RequestMapping(value="/allMember.do")
+   public String allMember(Model model ) {
+	   ArrayList<Member> list = service.selectAllMember();
+	   model.addAttribute("list",list);
+	   return "member/allMember";
+   }
+   
+   @RequestMapping(value="/allMemberCount.do")
+   public String allMemberCount(Model model) {
+	   int result = service.allMemberCount();
+	   model.addAttribute("msg","총 회원의 수는["+result+"]입니다.");
 	   model.addAttribute("loc","/");
 	   return "common/msg";
    }
