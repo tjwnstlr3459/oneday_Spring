@@ -27,4 +27,10 @@ public class NoticeService {
 		return (ArrayList<Notice>)list;
 	}
 
+
+	public int insertNotice(String title, String content, String writer) {
+		int result = dao.insertNotice(title,content,writer);
+		return result;
+	}
+
 }

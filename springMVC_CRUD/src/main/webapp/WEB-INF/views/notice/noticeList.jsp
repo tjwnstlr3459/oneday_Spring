@@ -28,6 +28,8 @@
 		</tr>
 		</c:forEach>
 	</table>
+	<button type="button"><a href="/noticeWrite.do">게시물 작성</a></button>
+	
 </body>
 </html>
 

@@ -28,4 +28,11 @@ public class NoticeDao {
 		return list;
 	}
 
+	public int insertNotice(String title, String content, String writer) {
+		String query ="insert into notice values(notice_seq.nextval,?,?,?,to_char(sysdate,'yyyy-mm-dd'))";
+		Object[] params= {title,content,writer};
+		int result = jdbcTemplate.update(query,params);
+		return result;
+	}
+
 }

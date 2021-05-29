@@ -26,6 +26,8 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<input type="button" value="게시물  수정">
+	<input type="button" value="게시물 삭제">
 	
 </body>
 </html>
