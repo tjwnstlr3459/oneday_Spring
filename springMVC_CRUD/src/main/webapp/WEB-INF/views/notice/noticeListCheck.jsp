@@ -24,10 +24,12 @@
 			<tr>
 				<th>내용</th><th colspan="3">${list.noContent }</th>
 			</tr>
-		</c:forEach>
 	</table>
-	<input type="button" value="게시물  수정">
-	<input type="button" value="게시물 삭제">
+		<c:if test='${m.memberId.equals(list.noWriter)}'>
+			<button type="button"><a href="/updateNotice.do?noticeNo=${list.noNo }">게시물 수정</a></button>
+			<button type="button"><a href="/deleteNotice.do?noticeNo=${list.noNo }">게시물 삭제</a></button>
+		</c:if>
+		</c:forEach>
 	
 </body>
 </html>

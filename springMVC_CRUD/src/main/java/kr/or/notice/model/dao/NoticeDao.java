@@ -35,4 +35,18 @@ public class NoticeDao {
 		return result;
 	}
 
+	public int updateNotice(String title, String content, int no) {
+		String query ="update notice set notice_title=?,notice_content=? where notice_no=?";
+		Object[] params= {title,content,no};
+		int result = jdbcTemplate.update(query,params);
+		return result;
+	}
+
+	public int deleteNotice(int noticeNo) {
+		String query ="delete from notice where notice_no=?";
+		Object[] params= {noticeNo};
+		int result = jdbcTemplate.update(query,params);
+		return result;
+	}
+
 }

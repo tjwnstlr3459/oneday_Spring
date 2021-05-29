@@ -33,4 +33,16 @@ public class NoticeService {
 		return result;
 	}
 
+
+	public int updateNotice(String title, String content, int no) {
+		int result = dao.updateNotice(title,content,no);
+		return result;
+	}
+
+
+	public int deleteNotice(int noticeNo) {
+		int result = dao.deleteNotice(noticeNo);
+		return result;
+	}
+
 }

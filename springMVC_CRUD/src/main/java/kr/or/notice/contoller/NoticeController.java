@@ -42,9 +42,6 @@ public class NoticeController {
 	
 	@RequestMapping(value="/noticeInsert.do")
 	public String noticeWrite(Model model,String title, String content, String writer) {
-		System.out.println(title);
-		System.out.println(content);
-		System.out.println(writer);
 		int result = service.insertNotice(title,content,writer);
 		if(result>0) {
 			model.addAttribute("msg","게시물 등록 완료");
@@ -52,7 +49,37 @@ public class NoticeController {
 			model.addAttribute("msg","게시물 등록 실패");
 		}
 		model.addAttribute("loc","/notice.do");
-		
+		return "common/msg";
+	}
+	
+	@RequestMapping(value="/updateNotice.do")
+	public String updateNotice(Model model,int noticeNo) {
+		ArrayList<Notice> n = service.selectOneNotice(noticeNo);
+		model.addAttribute("notice",n);
+		return "notice/noticeWriteUpdate";
+	}
+	
+	@RequestMapping(value="/noticeUpdate.do")
+	public String noticeUpdate(Model model,String title, String content, int no) {
+		int result = service.updateNotice(title,content,no);
+		if(result>0) {
+			model.addAttribute("msg","게시물 수정 완료");
+		}else {
+			model.addAttribute("msg","게시물 수정 실패");
+		}
+		model.addAttribute("loc","/notice.do");
+		return "common/msg";
+	}
+	
+		@RequestMapping(value="/deleteNotice.do")
+	public String noticeUpdate(Model model, int noticeNo) {
+		int result = service.deleteNotice(noticeNo);
+		if(result>0) {
+			model.addAttribute("msg","게시물이 삭제되었습니다");
+		}else {
+			model.addAttribute("msg","게시물 삭제 실패");
+		}
+		model.addAttribute("loc","/notice.do");
 		return "common/msg";
 	}
 }
