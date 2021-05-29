@@ -19,12 +19,12 @@
 			<th>작성자</th>
 			<th>날짜</th>
 		</tr>
-		<c:forEach items="${list }" var="list" varStatus="i">
+		<c:forEach items="${list }" var="l" varStatus="i">
 		<tr>
 			<th>${i.count }</th>
-			<th><a href="/noticeListCheck.do?noticeNo="${list.noticeNo }>${list.noTitle }</a></th>
-			<th>${list.noWriter }</th>
-			<th>${list.noDate }</th>
+			<th><a href="/noticeListCheck.do?noticeNo=${l.noNo }">${l.noTitle }</a></th>
+			<th>${l.noWriter }</th>
+			<th>${l.noDate }</th>
 		</tr>
 		</c:forEach>
 	</table>

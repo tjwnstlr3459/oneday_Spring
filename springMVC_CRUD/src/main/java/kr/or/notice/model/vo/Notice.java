@@ -6,18 +6,18 @@ public class Notice {
 	private String noContent;
 	private String noWriter;
 	private String noDate;
-	private int noticeNo;
+	private	int noNo;
 	public Notice() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Notice(String noTitle, String noContent, String noWriter, String noDate, int noticeNo) {
+	public Notice(String noTitle, String noContent, String noWriter, String noDate, int noNo) {
 		super();
 		this.noTitle = noTitle;
 		this.noContent = noContent;
 		this.noWriter = noWriter;
 		this.noDate = noDate;
-		this.noticeNo = noticeNo;
+		this.noNo = noNo;
 	}
 	public String getNoTitle() {
 		return noTitle;
@@ -43,13 +43,12 @@ public class Notice {
 	public void setNoDate(String noDate) {
 		this.noDate = noDate;
 	}
-	public int getNoticeNo() {
-		return noticeNo;
+	public int getNoNo() {
+		return noNo;
 	}
-	public void setNoticeNo(int noticeNo) {
-		this.noticeNo = noticeNo;
+	public void setNoNo(int noNo) {
+		this.noNo = noNo;
 	}
-	
-
 	
 }
+	

@@ -15,14 +15,14 @@
 	<table border="1">
 		<c:forEach items="${list }" var="list">
 			<tr>
-				<th>제목</th><th>${list.noTitle }</th>
+				<th>제목</th><th colspan="3">${list.noTitle }</th>
 			</tr>
 			<tr>
 				<th>작성자</th><th>${list.noWriter }</th>
 				<th>날짜</th><th>${list.noDate }</th>
 			</tr>
 			<tr>
-				<th>내용</th><th>${list.noContent }</th>
+				<th>내용</th><th colspan="3">${list.noContent }</th>
 			</tr>
 		</c:forEach>
 	</table>
