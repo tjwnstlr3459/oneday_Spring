@@ -72,7 +72,7 @@ public class NoticeController {
 	}
 	
 		@RequestMapping(value="/deleteNotice.do")
-	public String noticeUpdate(Model model, int noticeNo) {
+	public String deleteNotice(Model model, int noticeNo) {
 		int result = service.deleteNotice(noticeNo);
 		if(result>0) {
 			model.addAttribute("msg","게시물이 삭제되었습니다");
