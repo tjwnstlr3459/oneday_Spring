@@ -9,7 +9,7 @@ public class FileRowMapper implements RowMapper{
 
 	@Override
 	public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
-		File f =new File();
+		File f = new File();
 		f.setFileNo(rs.getInt("file_no"));
 		f.setFileName(rs.getNString("fileName"));
 		f.setFilePath(rs.getNString("filepath"));
