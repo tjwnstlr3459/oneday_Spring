@@ -61,6 +61,7 @@ public class MemberController {
 	   if(session !=null) {
 		   session.invalidate();
 		   model.addAttribute("msg","로그아웃하셨습니다");
+		   model.addAttribute("loc","/");
 	   }
 	   return "common/msg";
 	  

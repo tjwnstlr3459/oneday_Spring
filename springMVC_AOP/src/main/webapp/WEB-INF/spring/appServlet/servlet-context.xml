@@ -45,20 +45,34 @@
 	<beans:bean id="logging" class="kr.or.common.LoggingClass"/> -->
 	
 	<!-- Before 테스트 -->
-	<beans:bean id="before" class="kr.or.common.BeforeAdvice"/>
+	<!-- <beans:bean id="before" class="kr.or.common.BeforeAdvice"/> -->
+	
+	<!-- AfterRetuning 테스트 -->
+	<!-- <beans:bean id="after1" class="kr.or.common.AfterReturningAdvice"/> -->
+	
+	<!-- AfterThrowing 테스트 -->
+	<!-- <beans:bean id="after2" class="kr.or.common.AfterThrowingAdvice"/> -->
+	
+	<!-- Around 테스트 -->
+	<!-- <beans:bean id="around" class="kr.or.common.AroundAdvice"/>
 	
 	<aop:config>
 		<aop:pointcut expression="execution(* kr.or.member.model.service..*Service.*(*,..))" id="allPointcut"/>
-		<!-- 위에 bean log를 넣어준것 -->
-		<aop:aspect ref="before">
-			<aop:before method="beforeLog" pointcut-ref="allPointcut"/>
+		위에 bean log를 넣어준것
+		<aop:aspect ref="around">
+			<aop:around method="aroundLog" pointcut-ref="allPointcut"/>
+			
 		</aop:aspect>
-	</aop:config>
+	</aop:config> -->
+	
+	<!-- AOP 어노테이션 방식 사용 선언 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	
 	<context:component-scan base-package="kr.or.iei" />
 	<context:component-scan base-package="kr.or.member" />
 	<context:component-scan base-package="kr.or.notice" />
 	<context:component-scan base-package="kr.or.board" />
+	<context:component-scan base-package="kr.or.common" />
 	
 	
 	
