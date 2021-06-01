@@ -43,7 +43,7 @@ public class BoardDao {
 	}
 
 	public List selectAllBoard() {
-		String query = "select * from board";
+		String query = "select * from board order by 1 desc";
 		List list = jdbcTemplate.query(query,new BoardRowMapper());
 		return list;
 	}
