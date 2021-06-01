@@ -3,11 +3,13 @@ package kr.or.member.model.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.aspectj.lang.JoinPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.common.LogClass;
 import kr.or.common.LoggingClass;
+import kr.or.common.PasswordEnc;
 import kr.or.member.model.dao.MemberDao;
 import kr.or.member.model.vo.Member;
 
@@ -85,4 +87,33 @@ public class MemberService {
 		int result = dao.allMemberCount();
 		return result;
 	}
+	
+	public ArrayList<Member> pwCheckMember(Member m) {
+		
+		List list = dao.pwCheck(m);
+		return (ArrayList<Member>)list;
+	}
+
+	public int pwUpdateMember(Member m) {
+		int result = dao.pwUpdate(m);
+		return result;
+	}
+
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

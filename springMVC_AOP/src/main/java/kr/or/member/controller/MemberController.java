@@ -25,14 +25,14 @@ public class MemberController {
    
    @RequestMapping(value="/login.do")
    		//1.값추출
-   public String login(Member m,HttpSession session,Model model) {
+   public String loginMember(Member m,HttpSession session,Model model) {
 	   //2.로직처리
 	   Member member = service.selectOneMember(m);
 	   if(member!= null) {
 		   session.setAttribute("m", member);
 		   model.addAttribute("msg","로그인 성공");
 	   }else {
-		   model.addAttribute("msg","아이디 또는 비밀번호를 확인해주세ㅛㅇ");
+		   model.addAttribute("msg","아이디 또는 비밀번호를 확인해주세요");
 	   }
 	   model.addAttribute("loc","/");
 	   return "common/msg";
@@ -142,7 +142,57 @@ public class MemberController {
 	   model.addAttribute("loc","/");
 	   return "common/msg";
    }
+   
+   @RequestMapping(value = "/pwUpdate.do")
+   public String pwUpdate(Model model) {
+	   return "member/pwUpdate";
+   }
+   
+   @RequestMapping(value = "/pwCheck.do")
+   public String pwCheckMember(Model model,Member m) {
+	   ArrayList<Member> list = service.pwCheckMember(m);
+	   if(!list.isEmpty()) {
+		   model.addAttribute("msg","비밀번호 변경창으로 이동됩니다.");
+		   model.addAttribute("loc","/newPwUpdate.do");
+	   }else {
+		   model.addAttribute("msg","회원님의 비밀번호가 일치하지 않습니다.");
+		   model.addAttribute("loc","/pwUpdate.do");
+	   }
+	return "common/msg";
+   }
+   @RequestMapping(value="/newPwUpdate.do")
+   public String newPwUpdate(Model model, String newPw, Member m) {
+	   
+	return "member/newPwUpdate";
+   }
+   
+   
+   @RequestMapping(value="/newPwUpdateChange.do")
+   public String newPwUpdateChangeMember(Model model,Member m) {
+	   int result = service.pwUpdateMember(m);
+	   System.out.println(result);
+	   if(result>0) {
+		   model.addAttribute("msg","비밀번호가 변경되었습니다.");
+		   model.addAttribute("loc","/");
+	   }else {
+		   model.addAttribute("msg","비밀번호가 변경이 실패하였습니다.");
+		   model.addAttribute("loc","/pwUpdate.do");
+	   }
+	return "common/msg";
+   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

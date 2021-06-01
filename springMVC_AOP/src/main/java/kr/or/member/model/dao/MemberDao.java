@@ -4,6 +4,7 @@ package kr.or.member.model.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.aspectj.lang.JoinPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -68,7 +69,7 @@ public class MemberDao {
 	}
 
 	public int updateMember(Member m) {
-		String query = "update member set member_name=?, member_pw=?,phone=?,address=?,gender=? where member_id=?";
+		String query = "update member set member_name=?,member_pw=?,phone=?,address=?,gender=? where member_id=?";
 		Object[] params = {m.getMemberName(),m.getMemberPw(),m.getPhone(),m.getAddress(),m.getGender(),m.getMemberId()};
 		int result = jdbcTemplate.update(query,params);
 		return result;
@@ -86,6 +87,20 @@ public class MemberDao {
 		//DB에서 받을 값이 정수라서 int.class로 변환해서받는다
 		//안그러면 귀찮게 rowMapper를 또 만들어야하니
 		int result = jdbcTemplate.queryForObject(query, int.class);
+		return result;
+	}
+
+	public List pwCheck(Member m) {
+		String query = "select * from member where member_pw=? and member_id=?";
+		Object[] params = {m.getMemberPw(),m.getMemberId()};
+		List list = jdbcTemplate.query(query,params,new MemberRowMapper());
+		return list;
+	}
+
+	public int pwUpdate(Member m) {
+		String query = "update member set member_pw=? where member_id=?";
+		Object[]params = {m.getMemberPw(),m.getMemberId()};
+		int result = jdbcTemplate.update(query,params);
 		return result;
 	}
 }

@@ -9,13 +9,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+
 <body>
 	<h1>마이페이지</h1>
 	<hr>
 	<form action="/updatemember.do">
 		<fieldset>
 			아이디 : <input type="text" name="memberId" value="${member.memberId }" readonly><br>
+			<button type="button" onclick="location.href='/pwUpdate.do'">비밀번호 변경</button><br>
 			비밀번호 : <input type="password" name="memberPw" value="${member.memberPw }"><br>
+			
 			이름 : <input type="text" name="memberName" value="${member.memberName }"><br>
 			전화번호 : <input type="text" name="phone" value="${member.phone }"><br>
 			주소 : <input type="text" name="address" value="${member.address }"><br>
