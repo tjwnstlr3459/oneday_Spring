@@ -69,8 +69,8 @@ public class MemberDao {
 	}
 
 	public int updateMember(Member m) {
-		String query = "update member set member_name=?,member_pw=?,phone=?,address=?,gender=? where member_id=?";
-		Object[] params = {m.getMemberName(),m.getMemberPw(),m.getPhone(),m.getAddress(),m.getGender(),m.getMemberId()};
+		String query = "update member set phone=?,address=?,gender=? where member_id=?";
+		Object[] params = {m.getPhone(),m.getAddress(),m.getGender(),m.getMemberId()};
 		int result = jdbcTemplate.update(query,params);
 		return result;
 	}
@@ -103,6 +103,7 @@ public class MemberDao {
 		int result = jdbcTemplate.update(query,params);
 		return result;
 	}
+
 }
 
 

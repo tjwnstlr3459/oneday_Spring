@@ -73,7 +73,7 @@ public class MemberService {
 		return member;
 	}
 
-	public int updateMember(Member m) {
+	public int updateMemberUpdate(Member m) {
 		int result = dao.updateMember(m);
 		return result;
 	}

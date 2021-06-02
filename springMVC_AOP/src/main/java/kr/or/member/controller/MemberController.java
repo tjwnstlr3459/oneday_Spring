@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
 
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.vo.Member;
@@ -122,9 +125,10 @@ public class MemberController {
 		   return "member/mypage";
    }
    
+   //암호화에 걸리기 때문에 메소드명 member 해제
    @RequestMapping(value="/updatemember.do")
    public String updatemember(Member m,Model model) {
-	   int result = service.updateMember(m);
+	   int result = service.updateMemberUpdate(m);
 	   return "redirect:/mypage.do?memberId="+m.getMemberId();
    }
    
@@ -144,7 +148,7 @@ public class MemberController {
    }
    
    @RequestMapping(value = "/pwUpdate.do")
-   public String pwUpdate(Model model) {
+   public String pwUpdate() {
 	   return "member/pwUpdate";
    }
    
@@ -160,6 +164,8 @@ public class MemberController {
 	   }
 	return "common/msg";
    }
+   
+   
    @RequestMapping(value="/newPwUpdate.do")
    public String newPwUpdate(Model model, String newPw, Member m) {
 	   
@@ -179,6 +185,31 @@ public class MemberController {
 		   model.addAttribute("loc","/pwUpdate.do");
 	   }
 	return "common/msg";
+   }
+   
+   //아작스에 값 리턴해줘야하니 ResponseBody
+   @ResponseBody
+   @RequestMapping(value="/idChk.do")
+   public String idChk(String memberId) {
+	   Member member  = service.selectOneMember(memberId);
+	   if(member != null) {
+		   return "1";
+	   }else {
+		   return "0";
+	   }
+   }
+   
+   @RequestMapping(value="/allMemberAjax.do")
+   public String allMemberFrm() {
+	   return "member/allMemberAjax";
+   }
+   
+   @ResponseBody
+   @RequestMapping(value="allMemAjax.do",produces="application/json;charset=utf-8")
+   public String allMemAjax() {
+	   ArrayList<Member> list = service.selectAllMember();
+	   
+	return new Gson().toJson(list);
    }
 }
 
