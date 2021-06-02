@@ -187,30 +187,30 @@ public class MemberController {
 	return "common/msg";
    }
    
-//   //아작스에 값 리턴해줘야하니 ResponseBody
-//   @ResponseBody
-//   @RequestMapping(value="/idChk.do")
-//   public String idChk(String memberId) {
-//	   Member member  = service.selectOneMember(memberId);
-//	   if(member != null) {
-//		   return "1";
-//	   }else {
-//		   return "0";
-//	   }
-//   }
-//   
-//   @RequestMapping(value="/allMemberAjax.do")
-//   public String allMemberFrm() {
-//	   return "member/allMemberAjax";
-//   }
-//   
-//   @ResponseBody
-//   @RequestMapping(value="allMemAjax.do",produces="application/json;charset=utf-8")
-//   public String allMemAjax() {
-//	   ArrayList<Member> list = service.selectAllMember();
-//	   
-//	return new Gson().toJson(list);
-//   }
+   //아작스에 값 리턴해줘야하니 ResponseBody
+   @ResponseBody
+   @RequestMapping(value="/idChk.do")
+   public String idChk(String memberId) {
+	   Member member  = service.selectOneMember(memberId);
+	   if(member != null) {
+		   return "1";
+	   }else {
+		   return "0";
+	   }
+   }
+   
+   @RequestMapping(value="/allMemberAjax.do")
+   public String allMemberFrm() {
+	   return "member/allMemberAjax";
+   }
+   
+   @ResponseBody
+   @RequestMapping(value="allMemAjax.do",produces="application/json;charset=utf-8")
+   public String allMemAjax() {
+	   ArrayList<Member> list = service.selectAllMember();
+	   
+	return new Gson().toJson(list);
+   }
 }
 
 
