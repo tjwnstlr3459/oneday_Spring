@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="user">
+	<!-- 로그인 -->
+    <select id="selectOne" parameterType="u" resultType="u">
+		select
+			user_no as userNo,
+			email,
+			user_pw as userPw,
+			user_name as userName,
+			age
+		from user_tbl where email=#{email} and user_pw=#{userPw}
+	</select>
+	
+	
+	<!-- 회원가입 -->
+	<insert id="insertUser" parameterType="u">
+		insert into user_tbl values(user_seq.nextval,#{email},#{userPw},#{userName},#{age})
+	</insert>
+	
+	
+	<!-- 마이페이지 아이디찾기 -->
+    <select id="selectEmail" parameterType="string" resultType="u">
+		select
+			user_no as userNo,
+			email,
+			user_pw as userPw,
+			user_name as userName,
+			age
+		from user_tbl where email=#{userEmail}
+	</select>
+	
+	<!-- 정보수정 -->
+	<update id="updateUser" parameterType="u">
+		update user_tbl set
+			user_pw=#{userPw},
+			user_name=#{userName},
+			age=#{age}
+	</update>
+	
+	<delete id="deleteUser" parameterType="string">
+		delete from user_tbl where email=#{userEmail}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

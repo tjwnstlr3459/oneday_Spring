@@ -3,13 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -25,12 +21,13 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!--  -->
 	<!-- DB 접속정보를 저장하는 dataSource객체 생성 -->
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<beans:property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
-		<beans:property name="username" value="mybatis"/>
-		<beans:property name="password" value="1234"/>
+		<beans:property name="username" value="spring"/>
+		<beans:property name="password" value="spring"/>
 	</beans:bean>
 	
 	<!-- Mybatis 설정 -->
@@ -55,73 +52,20 @@
 		<beans:property name="maxUploadSize" value="10485760"/>
 	</beans:bean>
 	
-	
 	<!-- 트랜잭션 관리용 객체 -->
 	<beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<!-- 위에서 만든 dataSource를 받아 transactionManager에 넘겨준다 -->
 		<beans:property name="dataSource" ref="dataSource"></beans:property>
 	</beans:bean>
 	
-	
-	<!-- AOP 테스트 -->
-	<!-- <beans:bean id="log" class="kr.or.common.LogClass"/>
-	<beans:bean id="logging" class="kr.or.common.LoggingClass"/> -->
-	
-	<!-- Before 테스트 -->
-	<!-- <beans:bean id="before" class="kr.or.common.BeforeAdvice"/> -->
-	
-	<!-- AfterRetuning 테스트 -->
-	<!-- <beans:bean id="after1" class="kr.or.common.AfterReturningAdvice"/> -->
-	
-	<!-- AfterThrowing 테스트 -->
-	<!-- <beans:bean id="after2" class="kr.or.common.AfterThrowingAdvice"/> -->
-	
-	<!-- Around 테스트 -->
-	<!-- <beans:bean id="around" class="kr.or.common.AroundAdvice"/>
-	
-	<aop:config>
-		<aop:pointcut expression="execution(* kr.or.member.model.service..*Service.*(*,..))" id="allPointcut"/>
-		위에 bean log를 넣어준것
-		<aop:aspect ref="around">
-			<aop:around method="aroundLog" pointcut-ref="allPointcut"/>
-			
-		</aop:aspect>
-	</aop:config> -->
-	
-	<!-- AOP 어노테이션 방식 사용 선언 -->
-	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-	
-	<!-- 트랜잭션 어노테이션 사용 -->
-	<tx:annotation-driven/>
+	<!--  -->
 	
 	<context:component-scan base-package="kr.or.iei" />
-	<context:component-scan base-package="kr.or.member" />
-	<context:component-scan base-package="kr.or.notice" />
-	<context:component-scan base-package="kr.or.board" />
-	<context:component-scan base-package="kr.or.common" />
+	<context:component-scan base-package="kr.or.user" />
+	
+	
 	
 	
 	
 	
 </beans:beans>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
