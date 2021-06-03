@@ -14,7 +14,7 @@
    </select>
    
    <!-- 회원가입 -->
-   <insert id="joinMember" parameterType="m">
+   <insert id="insertMember" parameterType="m">
    	insert into member values(
    						#{memberId},
    						#{memberPw},
@@ -88,8 +88,7 @@
    
     <!-- 전체멤버출력 -->
    <select id="selectMemberCount" resultType="int" >
-   	select count(*) cnt
-   	from member
+   	select count(*) from member
    </select>
    
    <!-- 비번변경 -->

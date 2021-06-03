@@ -36,7 +36,7 @@ public class MemberDao {
 	}
 
 	public int insertMember(Member m) {
-		int result = sqlSession.update("member.joinMember",m);
+		int result = sqlSession.update("member.insertMember",m);
 //		String query = "insert into member values(?,?,?,?,?,?)";
 //		Object[] params = {m.getMemberId(), m.getMemberPw(), m.getMemberName(),m.getPhone(),m.getAddress(),m.getGender()};
 //		int result = jdbcTemplate.update(query,params);

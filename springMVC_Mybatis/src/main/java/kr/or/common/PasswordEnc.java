@@ -24,10 +24,14 @@ public class PasswordEnc {
 		String methodName = jp.getSignature().getDeclaringTypeName();
 		Object[] args = jp.getArgs();
 		Member m = (Member)args[0];	//멤버타입 하나만 Pointcut에 지정했기에 무조건 값 하나
-		String passwd = m.getMemberPw();
-		String encPw = enc.encDate(passwd);
-		System.out.println("메소드명 : "+methodName);
-		System.out.println("암호화 패스워드 :"+encPw);
-		m.setMemberPw(encPw);
+		
+		//pw가 null이면 오류가 나기에 pw가 필요한 페이지를 위해 작업처리
+		if(m.getMemberPw() != null) {
+			String passwd = m.getMemberPw();
+			String encPw = enc.encDate(passwd);
+			System.out.println("메소드명 : "+methodName);
+			System.out.println("암호화 패스워드 :"+encPw);
+			m.setMemberPw(encPw);
+		}
 	}
 }

@@ -28,7 +28,6 @@ public class MemberService {
 
 	public Member selectOneMember(Member m) {
 		Member member = dao.selectOneMember(m);
-		
 		return member;
 	}
 
