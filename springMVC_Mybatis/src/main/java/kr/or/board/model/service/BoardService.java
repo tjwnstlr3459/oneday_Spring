@@ -11,6 +11,7 @@ import kr.or.board.model.dao.BoardDao;
 import kr.or.board.model.vo.Board;
 import kr.or.board.model.vo.BoardRowMapper;
 import kr.or.board.model.vo.File;
+import kr.or.board.model.vo.FileRowMapper;
 
 @Service
 public class BoardService {
@@ -43,22 +44,22 @@ public class BoardService {
 		List list = dao.selectAllBoard();
 		return (ArrayList<Board>)list;
 	}
-//
+
 //	public Board selectOneBoard(int boardNo) {
-//		List list = dao.selectOneBoard(boardNo);
+//		Board b = dao.selectOneBoard(boardNo);
 //		
-//		List file = dao.selectFile(boardNo);
+//		File file = dao.selectFile(boardNo);
 //		
+//		ArrayList<File> fe = 
 //		
-//		
-//		Board b = new Board();
-//		
-//		b=(Board)list.get(0);
-//		b.setFileList((ArrayList<File>)file);
-//		
-//
+//		b.setFileList(file);
 //		return b;
 //	}
+	
+	public Board selectOneBoard(int boardNo) {
+		
+		return dao.selectOneBoard(boardNo);
+	}
 }
 
 

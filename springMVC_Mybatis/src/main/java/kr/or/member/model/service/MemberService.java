@@ -6,6 +6,7 @@ import java.util.List;
 import org.aspectj.lang.JoinPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.common.LogClass;
 import kr.or.common.LoggingClass;
@@ -31,8 +32,10 @@ public class MemberService {
 		return member;
 	}
 
+	@Transactional
 	public int insertMember(Member m) {
 		// TODO Auto-generated method stub
+		dao.insertMember(m);
 		return dao.insertMember(m);
 	}
 
@@ -46,17 +49,19 @@ public class MemberService {
 		Member member = dao.searchPw(m);
 		return member;
 	}
-
+	
+	@Transactional
 	public int deleteMember(String memberId) {
 		int result = dao.deleteMember(memberId);
 		return result;
 	}
-
+	
 	public Member selectOneMember(String memberId) {
 		Member member = dao.selectOneMember(memberId);
 		return member;
 	}
 
+	@Transactional	
 	public int updateMemberUpdate(Member m) {
 		int result = dao.updateMember(m);
 		return result;
@@ -78,6 +83,7 @@ public class MemberService {
 		return member;
 	}
 
+	@Transactional
 	public int pwUpdateMember(Member m) {
 		int result = dao.pwUpdate(m);
 		return result;

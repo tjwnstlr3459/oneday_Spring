@@ -120,15 +120,15 @@ public class BoardController {
 	   model.addAttribute("list",list);
 	return "board/boardList";
    }
-//   
-//   
-//   
-//   @RequestMapping(value="/boardListCheck.do")
-//   public String boardListCheck(Model model,int boardNo) {
-//	   Board b = service.selectOneBoard(boardNo);
-//	   model.addAttribute("board",b);
-//	return "board/boardListCheck";
-//   }
+   
+   
+   
+   @RequestMapping(value="/boardListCheck.do")
+   public String boardListCheck(Model model,int boardNo) {
+	   Board b = service.selectOneBoard(boardNo);
+	   model.addAttribute("board",b);
+	return "board/boardListCheck";
+   }
    
 }
 

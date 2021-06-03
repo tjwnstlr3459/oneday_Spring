@@ -22,7 +22,7 @@
 		<th>첨부파일</th>
 		<td colspan="3">
 		<c:forEach items="${board.fileList }" var="l">
-			${l.fileName }
+			${l.filePath }
 		</c:forEach>
 		</td>
 		

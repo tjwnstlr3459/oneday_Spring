@@ -60,19 +60,27 @@ public class BoardDao {
 //		List list = jdbcTemplate.query(query,new BoardRowMapper());
 //		return list;
 	}
-//
-//	public List selectOneBoard(int boardNo) {
-//		String query="select * from board where board_no=?";
-//		Object[] params = {boardNo};
-//		List list = jdbcTemplate.query(query, params,new BoardRowMapper());
-//		return list;
+
+	public Board selectOneBoard(int boardNo) {
+		return sqlSession.selectOne("board.selectOneBaord",boardNo);
+	}
+	
+	
+
+//	public Board selectOneBoard(int boardNo) {
+//		Board b = sqlSession.selectOne("board.selectOneBoard",boardNo);
+////		String query="select * from board where board_no=?";
+////		Object[] params = {boardNo};
+////		List list = jdbcTemplate.query(query, params,new BoardRowMapper());
+//		return b;
 //	}
 //
-//	public List selectFile(int boardNo) {
-//		String query = "select * from file_tbl where board_no=?";
-//		Object[] params = {boardNo};
-//		List list = jdbcTemplate.query(query, params,new FileRowMapper());
-//		return list;
+//	public File selectFile(int boardNo) {
+//		File f = sqlSession.selectOne("board.selectOneFile",boardNo);
+////		String query = "select * from file_tbl where board_no=?";
+////		Object[] params = {boardNo};
+////		List list = jdbcTemplate.query(query, params,new FileRowMapper());
+//		return f;
 //	}
 }
 
