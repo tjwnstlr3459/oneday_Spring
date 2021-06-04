@@ -38,6 +38,10 @@
 		<h3><a href="/deleteMember.do?memberId=${sessionScope.m.memberId }">회원탈퇴</a></h3>
 		<h3><a href="/boardWriteFrm.do">게시판 글쓰기</a></h3>
 		<h3><a href="/boardList.do">게시판 목록</a></h3>
+		<h3><a href="/couponList.do">내 쿠폰 확인하기</a></h3>
+		<c:if test="${sessionScope.m.memberId eq 'admin' }">
+			<h3><a href="/couponExpired.do">만료쿠폰 확인</a></h3>
+		</c:if>
 		</c:otherwise>
 	</c:choose>
 	

@@ -31,4 +31,8 @@ public class UserDao {
 		return sqlsession.delete("user.deleteUser",userEmail);
 	}
 
+	public User selectOnePw(User u) {
+		return sqlsession.selectOne("user.selectPw",u);
+	}
+
 }

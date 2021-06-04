@@ -4,8 +4,7 @@
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL"/>
 	</settings>
-	
-	<!-- board의 board와 file  -->
+	<!-- User가 있는 파일 경로지정  -->
 	<typeAliases>
 		<typeAlias type="kr.or.user.model.vo.User" alias="u"/>
 	</typeAliases>

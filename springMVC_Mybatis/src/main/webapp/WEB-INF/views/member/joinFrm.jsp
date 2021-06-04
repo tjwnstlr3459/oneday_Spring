@@ -25,14 +25,21 @@
 			<input type="reset" value="취소">
 		</fieldset>
 	</form>
+	<button id="btn">테스트 이동</button>
 	
-	<script>
+	
+	<!-- <script>
+	$("#btn").click(function(){
+		location.href="http://192.168.10.47";
+	});
+	
+	
 	$("[name=memberId]").keyup(function(){
 		
 		var memberId = $(this).val();
 		
 		$.ajax({
-			url : "/idChk.do",
+			url : "http://192.168.10.47/idChk.do",
 			data : {memberId:memberId},
 			type : "post",
 			success : function(data){
@@ -43,7 +50,7 @@
 				}
 			}
 		});
-	});
+	}); -->
 	</script>
 </body>
 </html>

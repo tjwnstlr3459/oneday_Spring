@@ -14,6 +14,8 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	
+	
+	
 	<dependencies>
 	<!-- mybatis -->
 	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
@@ -67,6 +69,7 @@
 	    <scope>provided</scope>
 	</dependency>
 	
+	<!-- 스프링프레임워크 DB연동 -->
 	<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
 	<dependency>
 	    <groupId>org.springframework</groupId>

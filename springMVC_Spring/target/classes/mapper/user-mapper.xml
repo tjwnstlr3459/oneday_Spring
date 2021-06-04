@@ -20,14 +20,14 @@
 	
 	
 	<!-- 마이페이지 아이디찾기 -->
-    <select id="selectEmail" parameterType="string" resultType="u">
+    <select id="selectEmail" parameterType="u" resultType="u">
 		select
 			user_no as userNo,
 			email,
 			user_pw as userPw,
 			user_name as userName,
 			age
-		from user_tbl where email=#{userEmail}
+		from user_tbl where email=#{email}
 	</select>
 	
 	<!-- 정보수정 -->
@@ -41,6 +41,17 @@
 	<delete id="deleteUser" parameterType="string">
 		delete from user_tbl where email=#{userEmail}
 	</delete>
+	
+	<select id="selectPw" parameterType="u" resultType="u">
+		select
+			user_no as userNo,
+			email,
+			user_pw as userPw,
+			user_name as userName,
+			age
+		from user_tbl where email=#{email} and user_Name=#{userName}
+	</select>
+	
 </mapper>
 
 

@@ -97,6 +97,20 @@
    		member_pw=#{memberPw}
    	where member_id=#{memberId}
    </update>
+   
+   
+   <!-- 쿠폰찾기 -->
+   <select id="selectCoupon" parameterType="m" resultType="c">
+   select 
+   		coupon_no as couponNo,
+   		coupon_name as couponName,
+   		coupon_content as couponContent,
+   		member_id as memberId,
+   		start_date as startDate,
+   		end_date as endDate,
+   		status
+   		from coupon where member_id=#{memberId}
+   </select>
 </mapper>
 
 

@@ -3,9 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -33,24 +35,26 @@
 	<!-- Mybatis 설정 -->
 	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource"/><!-- 위에서 만든 DB의 접속 정보를 넣어준다 -->
+												<!-- mybatis-config, mapper 경로설정 -->
 		<beans:property name="configLocation" value="classpath:mybatis-config.xml"/>
 		<beans:property name="mapperLocations" value="classpath:/mapper/*mapper.xml"/>
 	</beans:bean>
-	
 	<!-- jdbcTemplate를 대체한다 -->
 	<beans:bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg index="0" ref="sqlSession"/>
 	</beans:bean>
 	
-	<beans:bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	<!-- mybatis쓰기 전에 쓰던방식이라 필요없음 -->
+	<!-- <beans:bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<beans:property name="dataSource" ref="dataSource"/>
 	</beans:bean>
 	
-	<!-- 파일 업로드용 bean 생성 -->
+	파일 업로드용 bean 생성
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<!-- 파일용량 설정 -->
+		파일용량 설정
 		<beans:property name="maxUploadSize" value="10485760"/>
-	</beans:bean>
+	</beans:bean> -->
+	
 	
 	<!-- 트랜잭션 관리용 객체 -->
 	<beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -58,7 +62,10 @@
 		<beans:property name="dataSource" ref="dataSource"></beans:property>
 	</beans:bean>
 	
-	<!--  -->
+	
+	<!-- 트랜잭션 어노테이션 사용 -->
+	<tx:annotation-driven/>
+	
 	
 	<context:component-scan base-package="kr.or.iei" />
 	<context:component-scan base-package="kr.or.user" />

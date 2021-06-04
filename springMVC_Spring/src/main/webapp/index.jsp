@@ -30,7 +30,7 @@
 		<c:otherwise>
 		<h2>[${sessionScope.u.userName }]님 환영합니다.</h2>
 		<h3><a href="/logout.do">로그아웃</a></h3>
-		<h3><a href="/mypage.do?userEmail=${sessionScope.u.email }">마이페이지</a></h3>
+		<h3><a href="/mypage.do">마이페이지</a></h3>
 		<h3><a href="/deleteUser.do?userEmail=${sessionScope.u.email }">회원탈퇴</a></h3>
 		</c:otherwise>
 	</c:choose>

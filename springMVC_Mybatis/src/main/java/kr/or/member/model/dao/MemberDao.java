@@ -120,6 +120,11 @@ public class MemberDao {
 		return result;
 	}
 
+	/*
+	 * public Coupon selectCoupon(Member m) { Coupon coupon =
+	 * sqlSession.selectOne("member.selectCoupon",m); return coupon; }
+	 */
+
 }
 
 

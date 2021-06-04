@@ -4,11 +4,14 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
+import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.google.gson.Gson;
 
@@ -16,6 +19,7 @@ import kr.or.member.model.service.MemberService;
 import kr.or.member.model.vo.Member;
 
 @Controller
+@CrossOrigin(origins = {"*"})
 public class MemberController {
 	//자주쓸거라 전역변수 선언
 	@Autowired
@@ -211,6 +215,13 @@ public class MemberController {
 	   
 	return new Gson().toJson(list);
    }
+   
+	/*
+	 * @RequestMapping(value = "/couponList.do") public String
+	 * couponList(@SessionAttribute(required = false) Member m,Model model) { Coupon
+	 * coupon = service.selectCoupon(m); model.addAttribute("c",coupon); return
+	 * "coupon/couponList"; }
+	 */
 }
 
 

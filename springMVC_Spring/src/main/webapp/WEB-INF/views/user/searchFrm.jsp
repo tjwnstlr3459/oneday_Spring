@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>아이디 / 비밀번호 찾기</h1>
+	<!-- <h1>아이디 / 비밀번호 찾기</h1>
 	<hr>
 	<form action="/idSearch.do">
 		<fieldset>
@@ -16,12 +16,12 @@
 			전화번호 : <input type="text" name="phone"><br>
 			<input type="submit" value="아이디 조회">
 		</fieldset>
-	</form>
+	</form> -->
 	<form action="/pwSearch.do">
 		<fieldset>
 			<legend>비밀번호 찾기</legend>
-			아이디 : <input type="text" name="memberId"><br>
-			전화번호 : <input type="text" name="phone"><br>
+			이메일 : <input type="text" name="email"><br>
+			이름 : <input type="text" name="userName"><br>
 			<input type="submit" value="비밀번호 조회">
 		</fieldset>
 	</form>

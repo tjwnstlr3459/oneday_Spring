@@ -20,25 +20,24 @@
 		</fieldset>
 	</form>
 	
-	<!-- <script>
-	$("[name=memberId]").keyup(function(){
-		
+	<script>
+	$("[name=email]").keyup(function(){
 		var memberId = $(this).val();
 		
 		$.ajax({
 			url : "/idChk.do",
-			data : {memberId:memberId},
+			data : {email:memberId},
 			type : "post",
 			success : function(data){
 				if(data == 1){
-					$("#idChk").html("아이디 중복입니다.");
+					$("#idChk").html("이메일 중복입니다.");
 				}else{
-					$("#idChk").html("아이디 사용가능합니다");
+					$("#idChk").html("이메일 사용가능합니다");
 				}
 			}
 		});
 	});
-	</script> -->
+	</script>
 </body>
 </html>
 

@@ -35,7 +35,6 @@ public class MemberService {
 	@Transactional
 	public int insertMember(Member m) {
 		// TODO Auto-generated method stub
-		dao.insertMember(m);
 		return dao.insertMember(m);
 	}
 
@@ -88,6 +87,10 @@ public class MemberService {
 		int result = dao.pwUpdate(m);
 		return result;
 	}
+
+	/*
+	 * public Coupon selectCoupon(Member m) { return dao.selectCoupon(m); }
+	 */
 
 	
 }
