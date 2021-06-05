@@ -8,4 +8,5 @@ public class File {
 	private String fileName;
 	private String filePath;
 	private int boardNo;
+	
 }

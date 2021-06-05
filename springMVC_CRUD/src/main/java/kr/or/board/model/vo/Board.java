@@ -13,6 +13,8 @@ public class Board {
 	private String boardContent;
 	private String boardDate;
 	private ArrayList<File> fileList;
+	
+	
 }
 
 

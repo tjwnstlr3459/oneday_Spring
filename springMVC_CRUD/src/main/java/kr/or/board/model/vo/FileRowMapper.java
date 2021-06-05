@@ -14,7 +14,10 @@ public class FileRowMapper implements RowMapper{
 		f.setFileName(rs.getNString("fileName"));
 		f.setFilePath(rs.getNString("filepath"));
 		f.setBoardNo(rs.getInt("board_no"));
+		
 		return f;
+		
+		
 	}
 
 }
