@@ -100,6 +100,11 @@ public class MemberService {
 		return result;
 	}
 
+	public int checkDm(String dmNo) {
+		int result = dao.checkDm(dmNo);
+		return result;
+	}
+
 	/*
 	 * public Coupon selectCoupon(Member m) { return dao.selectCoupon(m); }
 	 */

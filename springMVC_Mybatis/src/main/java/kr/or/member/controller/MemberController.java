@@ -241,9 +241,15 @@ public class MemberController {
    }
    
    @RequestMapping(value = "/dmCheck.do")
-   public int dmCheck(String dmContent) {
-	   
-	return 0;
+   public String dmCheck(String dmNo,Model model) {
+	   int result = service.checkDm(dmNo);
+	   if(result>0) {
+		   model.addAttribute("msg","확인하였습니다.");   
+	   }else {
+		   model.addAttribute("msg","이미 확인하였습니다.");
+	   }
+	   model.addAttribute("loc","/");
+	return "common/msg";
    }
    
 	/*

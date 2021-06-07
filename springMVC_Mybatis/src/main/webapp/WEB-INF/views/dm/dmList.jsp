@@ -18,7 +18,7 @@
 		<c:forEach items="${dm}" var="d" varStatus="i">
 		<tr>
 			<th>${i.count }</th>
-			<th><a href="/dmCheck.do?dmContent=${d.dmContent }">${d.dmContent }</a></th>
+			<th><a href="/dmCheck.do?dmNo=${d.dmNo }">${d.dmContent }</a></th>
 			<th>${d.sender }</th>
 			<th>${d.receiver }</th>
 			<th>${d.dmTime }</th>

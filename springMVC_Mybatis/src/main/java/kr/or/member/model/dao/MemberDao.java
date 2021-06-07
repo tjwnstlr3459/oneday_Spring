@@ -132,6 +132,11 @@ public class MemberDao {
 		return result;
 	}
 
+	public int checkDm(String dmNo) {
+		int result = sqlSession.update("dm.checkDm",dmNo);
+		return result;
+	}
+
 	/*
 	 * public Coupon selectCoupon(Member m) { Coupon coupon =
 	 * sqlSession.selectOne("member.selectCoupon",m); return coupon; }
