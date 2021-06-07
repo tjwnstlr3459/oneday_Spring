@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import com.google.gson.Gson;
 
 import kr.or.member.model.service.MemberService;
+import kr.or.member.model.vo.Dm;
 import kr.or.member.model.vo.Member;
 
 @Controller
@@ -214,6 +215,35 @@ public class MemberController {
 	   ArrayList<Member> list = service.selectAllMember();
 	   
 	return new Gson().toJson(list);
+   }
+   
+   //채팅하기
+   @RequestMapping(value = "/allMemberChat.do")
+   public String allMemberChat() {
+	return "member/allChat";
+   }
+   
+   //쪽지함 가기
+   @RequestMapping(value="/dmList.do")
+   public String dmList(Member m,Model model) {
+	   ArrayList<Dm> d = service.selectDm(m);
+	   model.addAttribute("dm",d);
+	   return "dm/dmList";
+   }
+   
+   
+   //쪽찌 보내기
+   @ResponseBody
+   @RequestMapping(value="/sendDm.do")
+   public int sendDm(Dm d) {
+	   int result = service.insertDm(d);
+	return result;
+   }
+   
+   @RequestMapping(value = "/dmCheck.do")
+   public int dmCheck(String dmContent) {
+	   
+	return 0;
    }
    
 	/*
