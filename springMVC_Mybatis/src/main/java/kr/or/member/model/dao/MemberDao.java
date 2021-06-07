@@ -2,6 +2,7 @@ package kr.or.member.model.dao;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.aspectj.lang.JoinPoint;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import kr.or.member.model.vo.Dm;
 import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.MemberRowMapper;
 
@@ -117,6 +119,16 @@ public class MemberDao {
 //		String query = "update member set member_pw=? where member_id=?";
 //		Object[]params = {m.getMemberPw(),m.getMemberId()};
 //		int result = jdbcTemplate.update(query,params);
+		return result;
+	}
+
+	public List selectDm(Member m) {
+		List d = sqlSession.selectList("dm.selectDm",m);
+		return d;
+	}
+
+	public int insertDm(Dm d) {
+		int result = sqlSession.update("dm.insertDm",d);
 		return result;
 	}
 

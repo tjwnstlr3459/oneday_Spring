@@ -12,6 +12,7 @@ import kr.or.common.LogClass;
 import kr.or.common.LoggingClass;
 import kr.or.common.PasswordEnc;
 import kr.or.member.model.dao.MemberDao;
+import kr.or.member.model.vo.Dm;
 import kr.or.member.model.vo.Member;
 
 @Service
@@ -85,6 +86,17 @@ public class MemberService {
 	@Transactional
 	public int pwUpdateMember(Member m) {
 		int result = dao.pwUpdate(m);
+		return result;
+	}
+
+	public ArrayList<Dm> selectDm(Member m) {
+		List d = dao.selectDm(m);
+		return (ArrayList<Dm>)d;
+	}
+
+
+	public int insertDm(Dm d) {
+		int result = dao.insertDm(d);
 		return result;
 	}
 
