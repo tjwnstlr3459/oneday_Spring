@@ -21,7 +21,7 @@
 		#{receiver},
 		#{sender},
 		#{dmContent},
-		sysdate,
+		sysdate as dmTime,
 		'N')
 	</insert>
 	

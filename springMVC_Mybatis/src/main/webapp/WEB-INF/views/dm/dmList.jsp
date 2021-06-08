@@ -32,13 +32,21 @@
 	
 	<table border="1">
 		<tr>
-			<th>받는이</th><th><input type="text" name="receiver"></th>
+			<th>받는이</th>
+			<th>
+			<select type="text" name="receiver">
+				<option>user01</option>
+				<option>user02</option>
+				<option>user03</option>
+				<option>admin</option>
+			</select>
+			</th>
 		</tr>
 		<tr>
 			<th>보내는이</th><th><input type="text" name="sender" value='${sessionScope.m.memberId }'></th>
 		</tr>
-		<tr>
-			<th>내용</th><th><input type="text" name="dmContent"></th>
+		<tr height="100px">
+			<th rowspan="3">내용</th><th rowspan="3"><input style="height: 100px" type="text" name="dmContent"></th>
 		</tr>
 	</table>
 		<button type="button" id="budybudy">쪽찌 보내기</button>
@@ -56,10 +64,7 @@
 					alert("쪽지를 보냈습니다!");
 				}
 			}
-			
-			
 		});
-		
 	});
 </script>
 </html>
