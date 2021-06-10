@@ -252,6 +252,12 @@ public class MemberController {
 	return "common/msg";
    }
    
+   @ResponseBody
+   @RequestMapping(value = "/arduinoTest.do")
+   public void arduinoTest(String temp) {
+	   System.out.println("현재온도 : "+temp);
+   }
+   
 	/*
 	 * @RequestMapping(value = "/couponList.do") public String
 	 * couponList(@SessionAttribute(required = false) Member m,Model model) { Coupon
