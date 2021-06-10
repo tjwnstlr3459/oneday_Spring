@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="board">
+
+	<insert id="insertBoard" parameterType="b">
+		insert into board values(board_seq.nextval,
+								#{boardTitle},
+								#{boardWriter},
+								#{boardContent},
+								to_char(sysdate,'yyyy-mm-dd'))
+	</insert>
+	
+	<select id="selectBoardNo" resultType="int">
+		select max(board_no) from board
+	</select>
+	
+	<insert id="insertFile" parameterType="f">
+		insert into file_tbl values(file_seq.nextval,
+									#{fileName},
+									#{filePath},
+									#{boardNo})
+	</insert>
+	
+	<select id="selectAllBoard" resultType="b">
+		select 
+			board_no as boardNo,
+			board_title as boardTitle,
+			board_writer as boardWriter,
+			board_content as boardContent,
+			board_date as boardDate
+		from board
+	</select>
+	
+	
+	<!-- 게시물 상세보기 -->
+	<select id="selectOneBaord" parameterType="int" resultMap="board">
+		select * from board where board_no=#{boardNo}
+	</select>
+	
+	<!-- 파일찾기 -->
+	<select id="getFileList" parameterType="int" resultType="f">
+		select 
+			file_no as fileNo,
+			filename as fileName,
+			filepath as filePath,
+			board_no as boardNo
+		from File_tbl where board_no=#{board_No}
+	</select>
+	
+	<!-- type이 최종적으로 나갈타입 -->
+	<!-- id는 쓸값을 가져온다 -->
+	<resultMap type="b" id="board">
+		<result column="board_no" property="boardNo"/>
+		<result column="board_Title" property="boardTitle"/>
+		<result column="board_writer" property="boardWriter"/>
+		<result column="board_content" property="boardContent"/>
+		<result column="board_date" property="boardDate"/>
+		
+		<collection property="fileList" 
+					column="board_no"
+					javaType="java.util.ArrayList"
+					ofType="f"
+					select="getFileList"/>
+	</resultMap>
+	
+	
+	
+	
+	<!-- <select id="selectOneBoard" parameterType="String" resultType="b">
+		select 
+			board_no as boardNo,
+			board_title as boardTitle,
+			board_writer as boardWriter,
+			board_content as boardContent,
+			board_date as boardDate
+		from board where board_no=#{boardNo}
+	</select> -->
+	
+	<!-- <select id="selectOneFile" parameterType="String" resultType="f">
+		select 
+			file_no as boardNo,
+			file_name as fileName,
+			file_path as filePath,
+		from File where board_no=#{boardNo}
+	</select> -->
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
