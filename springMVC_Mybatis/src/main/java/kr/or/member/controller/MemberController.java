@@ -258,6 +258,7 @@ public class MemberController {
 	   System.out.println("현재온도 : "+temp);
    }
    
+   //주석처리
 	/*
 	 * @RequestMapping(value = "/couponList.do") public String
 	 * couponList(@SessionAttribute(required = false) Member m,Model model) { Coupon
