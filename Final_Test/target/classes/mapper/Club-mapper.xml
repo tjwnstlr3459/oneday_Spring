@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="club">
+<!-- 회원이 속한 클럽 출력 -->
+<select id="memberClubList"  parameterType="m" resultType="c">
+	SELECT
+		CLUB_NO as clubNo,
+		CLUB_CG  as clubCg,            
+		CLUB_NAME  as clubName,
+		CLUB_INTRO  as clubIntro,
+		CLUB_OPENER  as clubOpener,        
+		FILENAME,  
+		FILEPATH, 
+		CLUB_RATING as clubRating,
+		ISPUBLIC,
+		ENROLL_DATE as enrollDate,
+		LAST_DATE as lastDate,
+		WARNING_COUNT as warningCount
+	FROM CLUB WHERE 
+	CLUB_NO IN(SELECT CLUB_NO FROM CLUB_MEMBER WHERE CLUB_NICK= #{memberNick})
+</select>
+
+<!-- 회원이 작성한 클럽의 게시물 -->
+<!-- <select id="memberClubPosts" parameterType="m" resultType="b">
+SELECT 
+    A.board_no as boardNo,
+    A.club_no as clubNo,
+    A.board_cg as boardCg,
+    A.BOARD_WRITER as boardWriter,
+    A.board_title as boardTitle,
+    A.board_content as boardContent,
+    A.fileName,
+    A.filePath,
+    A.board_views as boardViews,
+    A.BOARD_good as cbGood,
+    A.enroll_date as enrollDate,
+    C.CLUB_NAME AS clubName 
+FROM CLUB_BOARD A,CLUB C 
+WHERE C.CLUB_NO = A.CLUB_NO 
+AND 
+C.CLUB_NO IN(SELECT CLUB_NO FROM CLUB_MEMBER WHERE CLUB_NICK=#{memberNick})
+ORDER BY A.ENROLL_DATE DESC
+</select> -->
+
+<!-- 회원이 작성한 클럽의 게시물 더보기형식 -->
+<select id="phtoMore" parameterType="map" resultType="b">
+SELECT * FROM
+(select rownum as rnum,p.*from
+(SELECT 
+    A.board_no as boardNo,
+    A.club_no as clubNo,
+    A.board_cg as boardCg,
+    A.BOARD_WRITER as boardWriter,
+    A.board_title as boardTitle,
+    A.board_content as boardContent,
+    A.fileName,
+    A.filePath,
+    A.board_views as boardViews,
+    A.BOARD_good as cbGood,
+    A.enroll_date as enrollDate,
+    C.CLUB_NAME AS clubName 
+	FROM CLUB_BOARD A,CLUB C 
+	WHERE C.CLUB_NO = A.CLUB_NO 
+	AND 
+C.CLUB_NO IN(SELECT CLUB_NO FROM CLUB_MEMBER WHERE CLUB_NICK=#{m}) ORDER BY A.ENROLL_DATE DESC)P) WHERE RNUM BETWEEN #{start} AND #{end}
+</select>
+
+<!-- 전체게시물 수 파악 -->
+<select id="totalCount" parameterType="m" resultType="int">
+SELECT 
+    count(*)
+FROM CLUB_BOARD A,CLUB C 
+WHERE C.CLUB_NO = A.CLUB_NO 
+AND 
+C.CLUB_NO IN(SELECT CLUB_NO FROM CLUB_MEMBER WHERE CLUB_NICK=#{memberNick})
+</select>
+
+<!-- 게시물 등록 -->
+<insert id="insertPost" parameterType="b">
+insert into club_board values(
+    CB_SEQ.NEXTVAL,
+    #{clubNo},
+    #{boardCg},
+    #{boardWriter},
+    #{boardTitle},
+    #{boardContent},
+    null,
+    null,
+    1,
+    1,
+    to_char(sysdate,'yyyy-mm-dd'))
+</insert>
+
+<!-- 게시글 no를 찾아내기 위한 쿼리 -->
+<select id="selectBoardNo">
+	select max(board_no) from club_board
+</select>
+
+<!-- 파일추가하기위한 쿼리 -->
+<update id="insertFile" parameterType="b">
+	update club_board set 
+		fileName=#{fileName},
+		filePath=#{filePath}
+	where board_no=#{boardNo}
+</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

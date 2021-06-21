@@ -2,10 +2,11 @@
     pageEncoding="UTF-8"%>
     <!-- JSTL Core 태그 -->
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js"></script>
+    
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
