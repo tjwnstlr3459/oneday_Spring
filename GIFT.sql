@@ -1,0 +1,12 @@
+CREATE TABLE CAFE_MEMBER(
+    CAFE_ID     VARCHAR2(100)       PRIMARY KEY,
+    CAFE_PW     VARCHAR2(100)       NOT NULL,
+    CAFE_NAME   VARCHAR2(20)        NOT NULL,
+    CAFE_ADDR   VARCHAR2(1000)      NOT NULL,
+    CAFE_INFO   VARCHAR2(4000)      NOT NULL
+);
+
+INSERT INTO CAFE_MEMBER VALUES('USER00','1234','서준식','양천구','난 짱이다');
+COMMIT;
+
+select * from cafe_member;
